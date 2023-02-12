@@ -1,4 +1,4 @@
-#Kalkulator v1.7
+#Kalkulator v1.7.1
 
 def kalkulator(num1, operasi, num2):
     if operasi == '+':
@@ -15,8 +15,12 @@ def kalkulator(num1, operasi, num2):
     else:
         return "Operasi bilangan salah"
 
-num1 = float(input("Masukkan angka pertama: "))
-operasi = input("Masukkan operasi bilangan (+, -, *, /): ")
-num2 = float(input("Masukkan angka kedua: "))
+while True:
+    num1 = float(input("Masukkan angka pertama: "))
+    operasi = input("Masukkan operasi bilangan (+, -, *, /): ")
+    num2 = float(input("Masukkan angka kedua: "))
 
-print(kalkulator(num1, operasi, num2))
+    print(kalkulator(num1, operasi, num2))
+    kalkulasi_lainnya = input("Apakah kamu ingin melakukan kalkulasi lainnya (ya/tidak)? ")
+    if kalkulasi_lainnya.lower() ==  'tidak':
+        break
