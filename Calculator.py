@@ -1,26 +1,36 @@
-#Kalkulator v1.7.1
+#Kalkulator v1.7.4
 
-def kalkulator(num1, operasi, num2):
-    if operasi == '+':
-        return num1 + num2
-    elif operasi == '-':
-        return num1 - num2
-    elif operasi == '*':
-        return num1 * num2
-    elif operasi == '/':
-        if num2 != 0:
-            return num1 / num2
+def kalkulator(numbers, operasi):
+    hasil = numbers[0]
+    for i in range(1, len(numbers)):
+        if operasi == '+':
+            hasil += numbers[i]
+        elif operasi == '-':
+            hasil -= numbers[i]
+        elif operasi == '*':
+            hasil *= numbers[i]
+        elif operasi == '/':
+            if numbers[i] != 0:
+                hasil /= numbers[i]
+            else:
+                return "Error: Pembagian dengan Nol"
         else:
-            return "Error: Pembagian dengan Nol"
-    else:
-        return "Operasi bilangan salah"
+            return "Operasi bilangan salah"
+    return int(hasil)
 
 while True:
-    num1 = float(input("Masukkan angka pertama: "))
+    numbers = []
+    while True:
+        num = input("Masukkan angka (atau masukkan 'q' untuk selesai): ")
+        if num.lower() == 'q':
+            break
+        numbers.append(float(num))
+    
+    if not numbers:
+        break
     operasi = input("Masukkan operasi bilangan (+, -, *, /): ")
-    num2 = float(input("Masukkan angka kedua: "))
+    print(kalkulator(numbers, operasi))
 
-    print(kalkulator(num1, operasi, num2))
     kalkulasi_lainnya = input("Apakah kamu ingin melakukan kalkulasi lainnya (ya/tidak)? ")
     if kalkulasi_lainnya.lower() ==  'tidak':
         break
