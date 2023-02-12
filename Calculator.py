@@ -1,17 +1,22 @@
-#Kalkulator v1.6
+#Kalkulator v1.7
 
-pilih = input("""Selamat Datang Di Kalkulator v1.0
-1. Tambah
-2. Kurang
-Pilihan: """)
+def kalkulator(num1, operasi, num2):
+    if operasi == '+':
+        return num1 + num2
+    elif operasi == '-':
+        return num1 - num2
+    elif operasi == '*':
+        return num1 * num2
+    elif operasi == '/':
+        if num2 != 0:
+            return num1 / num2
+        else:
+            return "Error: Pembagian dengan Nol"
+    else:
+        return "Operasi bilangan salah"
 
-if pilih == "Tambah" or pilih == "tambah":
-    x = int(input("Masukkan angka pertama: "))
-    y = int(input("Masukkan angka kedua: "))
-    print("Hasilnya adalah " + str(x + y))
-elif pilih == "Kurang" or pilih == "kurang":
-    x = int(input("Masukkan angka pertama: "))
-    y = int(input("Masukkan angka kedua: "))
-    print("Hasilnya adalah " + str(x - y))
-else:
-    print("Error")
+num1 = float(input("Masukkan angka pertama: "))
+operasi = input("Masukkan operasi bilangan (+, -, *, /): ")
+num2 = float(input("Masukkan angka kedua: "))
+
+print(kalkulator(num1, operasi, num2))
