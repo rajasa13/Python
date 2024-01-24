@@ -1,4 +1,1 @@
-def msg():
-    print("Hello World!!!")
-
-msg()
+print("Hello World!")
