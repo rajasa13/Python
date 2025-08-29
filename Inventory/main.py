@@ -29,3 +29,25 @@ def add_item(inventory):
                           'quantity': quantity}
     print("Item added successfully!")
 
+# Record incoming goods
+def incoming_goods(inventory):
+    item_id = input("Enter item ID: ")
+    if item_id not in inventory:
+        print("Item not found!")
+        return
+    qty = int(input("Enter incoming quantity: "))
+    inventory[item_id]["quantity"] += qty
+    print("Incoming goods recorded!")
+
+# Record outgoing goods
+def outgoing_goods(inventory):
+    item_id = input("Enter item ID: ")
+    if item_id not in inventory:
+        print("Item not found!")
+        return
+    qty = int(input("Enter outgoing quantity: "))
+    if qty > inventory[item_id]["quantity"]:
+        print("Not enough stock!")
+        return
+    inventory[item_id]["quantity"] -= qty
+    print("Incoming goods recorded!")
