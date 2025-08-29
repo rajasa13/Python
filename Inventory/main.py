@@ -51,3 +51,9 @@ def outgoing_goods(inventory):
         return
     inventory[item_id]["quantity"] -= qty
     print("Incoming goods recorded!")
+
+# Show inventory
+def show_inventory(inventory):
+    print("\n--- INVENTORY LIST ---")
+    for item_id, data in inventory.items():
+        print(f"{item_id}: {data['name']} - {data['quantity']} - {data['unit']}")
