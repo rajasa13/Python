@@ -50,10 +50,38 @@ def outgoing_goods(inventory):
         print("Not enough stock!")
         return
     inventory[item_id]["quantity"] -= qty
-    print("Incoming goods recorded!")
+    print("Outgoing goods recorded!")
 
 # Show inventory
 def show_inventory(inventory):
     print("\n--- INVENTORY LIST ---")
     for item_id, data in inventory.items():
         print(f"{item_id}: {data['name']} - {data['quantity']} - {data['unit']}")
+
+def main():
+    inventory = load_inventory()
+    while True:
+        print("\n1. Add Item")
+        print("2. Record Incoming Goods")
+        print("3. Record Outgoing Goods")
+        print("4. Show Inventory")
+        print("5. Exit")
+        choice = input("Choose: ")
+
+        if choice == "1":
+            add_item(inventory)
+        elif choice == "2":
+            incoming_goods(inventory)
+        elif choice == "3":
+            outgoing_goods(inventory)
+        elif choice == "4":
+            show_inventory(inventory)
+        elif choice == "5":
+            save_inventory(inventory)
+            print("Inventory saved. Goodbye!")
+            break
+        else:
+            print("Invalid choice!")
+
+if __name__ == "__main__":
+    main()
