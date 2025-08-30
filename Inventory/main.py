@@ -68,7 +68,7 @@ def show_inventory(inventory):
 
 # Delete item
 def delete_item(inventory):
-    item_id = input("Enter item ID to delete: ")
+    item_id = int(input("Enter item ID to delete: "))
     if item_id not in inventory:
         print("Item not found!")
         return
