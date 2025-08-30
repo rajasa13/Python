@@ -62,7 +62,7 @@ def show_inventory(inventory):
     if not inventory:
         print("Inventory is empty.")
         return
-    for item_id in sorted(inventory.keys()): # Sort by item ID numerically
+    for item_id in sorted(inventory.keys(), key=lambda x: int(x)): # Sort by item ID numerically
         data = inventory[item_id]
         print(f"{item_id}: {data['name']} - {data['quantity']} - {data['unit']}")
 
