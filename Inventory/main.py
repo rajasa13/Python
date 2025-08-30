@@ -63,7 +63,7 @@ def show_inventory(inventory):
         print(f"{item_id}: {data['name']} - {data['quantity']} - {data['unit']}")
 
 # Delete item
-def delte_item(inventory):
+def delete_item(inventory):
     item_id = input("Enter item ID to delete: ")
     if item_id not in inventory:
         print("Item not found!")
@@ -82,7 +82,8 @@ def main():
         print("2. Record Incoming Goods")
         print("3. Record Outgoing Goods")
         print("4. Show Inventory")
-        print("5. Exit")
+        print("5. Delete Item")
+        print("6. Exit")
         choice = input("Choose: ")
 
         if choice == "1":
@@ -94,6 +95,8 @@ def main():
         elif choice == "4":
             show_inventory(inventory)
         elif choice == "5":
+            delete_item(inventory)
+        elif choice == "6":
             save_inventory(inventory)
             print("Inventory saved. Goodbye!")
             break
