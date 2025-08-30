@@ -62,6 +62,19 @@ def show_inventory(inventory):
     for item_id, data in inventory.items():
         print(f"{item_id}: {data['name']} - {data['quantity']} - {data['unit']}")
 
+# Delete item
+def delte_item(inventory):
+    item_id = input("Enter item ID to delete: ")
+    if item_id not in inventory:
+        print("Item not found!")
+        return
+    confirm = input(f"Are you sure you want to delete '{inventory[item_id]['name']}'? (y/n): ")
+    if confirm == 'y':
+        del inventory[item_id]
+        print("Item deleted successfully!")
+    else:
+        print("Delete cancelled.")
+
 def main():
     inventory = load_inventory()
     while True:
