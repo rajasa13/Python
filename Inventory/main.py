@@ -21,7 +21,7 @@ def save_inventory(inventory):
 
 # Add a new item to the inventory
 def add_item(inventory):
-    item_id = input("Enter item ID: ")
+    item_id = int(input("Enter item ID: "))
     if item_id in inventory:
         print("Item ID already exists!")
         return
@@ -35,7 +35,7 @@ def add_item(inventory):
 
 # Record incoming goods
 def incoming_goods(inventory):
-    item_id = input("Enter item ID: ")
+    item_id = int(input("Enter item ID: "))
     if item_id not in inventory:
         print("Item not found!")
         return
@@ -45,7 +45,7 @@ def incoming_goods(inventory):
 
 # Record outgoing goods
 def outgoing_goods(inventory):
-    item_id = input("Enter item ID: ")
+    item_id = int(input("Enter item ID: "))
     if item_id not in inventory:
         print("Item not found!")
         return
@@ -59,7 +59,11 @@ def outgoing_goods(inventory):
 # Show inventory
 def show_inventory(inventory):
     print("\n--- INVENTORY LIST ---")
-    for item_id, data in inventory.items():
+    if not inventory:
+        print("Inventory is empty.")
+        return
+    for item_id in sorted(inventory.keys()): # Sort by item ID numerically
+        data = inventory[item_id]
         print(f"{item_id}: {data['name']} - {data['quantity']} - {data['unit']}")
 
 # Delete item
