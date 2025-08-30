@@ -1,7 +1,11 @@
 import json
 import os
 
-INVENTORY_FILE = 'inventory.json'
+# Path of the current inventory file
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# JSON file inside the same folder as main.py
+INVENTORY_FILE = os.path.join(BASE_DIR, 'inventory.json')
 
 # Load inventory from file
 def load_inventory():
