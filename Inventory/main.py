@@ -79,6 +79,32 @@ def delete_item(inventory):
     else:
         print("Delete cancelled.")
 
+# Edit item details
+def edit_item(inventory):
+    item_id = input("Enter item ID to edit: ")
+    if item_id not in inventory:
+        print("Item not found!")
+        return
+    
+    print(f"Current details: {inventory[item_id]}")
+    print("Leave blank to keep current value.")
+
+    new_name = input("Enter new name: ")
+    new_unit = input("Enter new unit: ")
+    new_qty = input("Enter new quantity: ")
+
+    if new_name.strip():
+        inventory[item_id]['name'] = new_name
+    if new_unit.strip():
+        inventory[item_id]['unit'] = new_unit
+    if new_qty.strip():
+        try:
+            inventory[item_id]['quantity'] = int(new_qty)
+        except ValueError:
+            print("Invalid quantity, keeping old value.")
+    
+    print("Item updated successfully!")
+
 def main():
     inventory = load_inventory()
     while True:
@@ -87,7 +113,8 @@ def main():
         print("3. Record Outgoing Goods")
         print("4. Show Inventory")
         print("5. Delete Item")
-        print("6. Exit")
+        print("6. Edit Item")
+        print("7. Exit")
         choice = input("Choose: ")
 
         if choice == "1":
@@ -101,6 +128,8 @@ def main():
         elif choice == "5":
             delete_item(inventory)
         elif choice == "6":
+            edit_item(inventory)
+        elif choice == "7":
             save_inventory(inventory)
             print("Inventory saved. Goodbye!")
             break
