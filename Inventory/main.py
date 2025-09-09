@@ -105,6 +105,7 @@ def edit_item(inventory):
     
     print("Item updated successfully!")
 
+# Display menu and handle user choices
 def main():
     inventory = load_inventory()
     while True:
