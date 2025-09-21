@@ -28,9 +28,13 @@ def add_item(inventory):
     name = input("Enter item name: ")
     unit = input("Enter item unit (e.g., kg, pcs): ")
     quantity = int(input("Enter item quantity: "))
-    inventory[item_id] = {'name': name, 
-                          'unit': unit, 
-                          'quantity': quantity}
+    min_stock = int(input("Enter minimum stock for alert: "))
+    inventory[item_id] = {
+        'name': name, 
+        'unit': unit, 
+        'quantity': quantity,
+        'min_stock': min_stock
+    }
     print("Item added successfully!")
 
 # Record incoming goods
@@ -55,6 +59,14 @@ def outgoing_goods(inventory):
         return
     inventory[item_id]["quantity"] -= qty
     print("Outgoing goods recorded!")
+
+# Check for low stock items
+def check_low_stock(inventory):
+    low_items = []
+    for item_id, data in inventory.items():
+        if data["quantity"] <= data["min_stock"]:
+            low_items.append((item_id, data))
+        return low_items
 
 # Show inventory
 def show_inventory(inventory):
